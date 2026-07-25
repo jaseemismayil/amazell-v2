@@ -38,7 +38,7 @@ export default function FeaturedProducts() {
 
   return (
     <section id="products" className="overflow-hidden bg-black">
-      <div ref={pinRef} className="relative h-[300vh]">
+      <div ref={pinRef} className="relative h-[180vh]">
         <div className="sticky top-0 flex h-[100svh] flex-col justify-center">
           <div className="mb-14 px-[6vw]">
             <div className="eyebrow">Featured Products</div>
@@ -51,24 +51,26 @@ export default function FeaturedProducts() {
             {products.map((product) => (
               <div
                 key={product.name}
-                className="relative flex h-[500px] w-[min(78vw,380px)] flex-none flex-col overflow-hidden rounded border border-line bg-[#0a0a0a] transition-colors duration-400 hover:border-gold-dim"
+                className="relative flex h-[500px] w-[min(78vw,400px)] flex-none flex-col overflow-hidden rounded border border-line bg-panel-2 transition-colors duration-400 hover:border-gold-dim"
               >
-                <div className="relative h-[230px] w-full overflow-hidden">
+                <div className="relative h-[260px] w-full overflow-hidden bg-[radial-gradient(circle_at_50%_38%,rgba(201,162,75,0.10),transparent_68%)]">
                   <Image
                     src={product.image}
                     alt={product.imageAlt}
                     fill
-                    sizes="(max-width: 768px) 78vw, 380px"
-                    className="object-cover"
+                    sizes="(max-width: 768px) 78vw, 400px"
+                    className="object-contain p-8 drop-shadow-[0_28px_36px_rgba(0,0,0,0.55)]"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/30" />
                   <span className="absolute left-5 top-5 rounded-full border border-gold-dim bg-black/60 px-3 py-1.5 text-[10.5px] uppercase tracking-[0.16em] text-gold-bright backdrop-blur-sm">
                     {product.badge}
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col justify-between p-7 pt-6">
-                  <div className="font-display text-[21px] text-offwhite">{product.name}</div>
+                <div className="flex flex-1 flex-col justify-between border-t border-line p-7 pt-6">
+                  <div>
+                    <div className="font-display text-[19px] leading-tight text-offwhite">{product.name}</div>
+                    <div className="mt-1 text-[11px] uppercase tracking-[0.1em] text-muted-2">Model {product.model}</div>
+                  </div>
 
                   <div className="flex gap-6 border-t border-line pt-4.5">
                     <div>
@@ -76,12 +78,12 @@ export default function FeaturedProducts() {
                       <b className="font-display text-[15px] font-medium text-offwhite">{product.capacity}</b>
                     </div>
                     <div>
-                      <span className="mb-1 block text-[10.5px] uppercase tracking-[0.08em] text-muted-2">Warranty</span>
-                      <b className="font-display text-[15px] font-medium text-offwhite">{product.warranty}</b>
+                      <span className="mb-1 block text-[10.5px] uppercase tracking-[0.08em] text-muted-2">Rating</span>
+                      <b className="font-display text-[15px] font-medium text-offwhite">{product.rating}</b>
                     </div>
                     <div>
-                      <span className="mb-1 block text-[10.5px] uppercase tracking-[0.08em] text-muted-2">Life</span>
-                      <b className="font-display text-[15px] font-medium text-offwhite">{product.life}</b>
+                      <span className="mb-1 block text-[10.5px] uppercase tracking-[0.08em] text-muted-2">Warranty</span>
+                      <b className="font-display text-[15px] font-medium text-offwhite">{product.warranty}</b>
                     </div>
                   </div>
                   <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.08em] text-gold-bright">

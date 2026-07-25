@@ -32,9 +32,10 @@ export interface ManufacturingStep {
 export interface Product {
   badge: string;
   name: string;
+  model: string;
   capacity: string;
+  rating: string;
   warranty: string;
-  life: string;
   image: string;
   imageAlt: string;
 }
