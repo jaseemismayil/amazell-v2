@@ -100,19 +100,34 @@ export const products: Product[] = [
 
 export const factoryGallery: FactoryImage[] = [
   {
-    src: '/images/factory/factory-quality-control.webp',
-    alt: 'Quality control station on the AMAZELL production floor',
-    caption: 'Every unit — voltage, capacity, load and terminal checked.',
+    src: '/images/factory/factory-inva-line-monitoring.webp',
+    alt: 'Line operators monitoring the Inva Special production run at the AMAZELL factory',
+    caption: 'Inva Special line — monitored cell by cell as it runs.',
   },
   {
-    src: '/images/factory/factory-formation-testing.webp',
-    alt: 'Battery formation and testing line at the AMAZELL factory',
-    caption: 'Formation & testing, batch by batch.',
+    src: '/images/factory/factory-inva-quality-control.webp',
+    alt: 'Quality control checklist and stacked Inva Special batteries at the AMAZELL factory',
+    caption: 'Voltage, capacity, load, terminal — four checks, every unit.',
   },
   {
-    src: '/images/factory/factory-floor-solar.webp',
-    alt: 'Wide view of the AMAZELL manufacturing floor',
-    caption: 'A production line built for consistency at scale.',
+    src: '/images/factory/factory-solar-assembly.webp',
+    alt: 'Worker assembling AMAZELL Solar series batteries on the production line',
+    caption: 'Solar series assembly, tube by tube.',
+  },
+  {
+    src: '/images/factory/factory-solar-floor.webp',
+    alt: 'Wide view of the AMAZELL Solar series production floor',
+    caption: 'The solar line, built for scale.',
+  },
+  {
+    src: '/images/factory/factory-formation-testing-01.webp',
+    alt: 'Battery formation and testing area at the AMAZELL factory',
+    caption: 'Formation & testing — where the charge gets locked in.',
+  },
+  {
+    src: '/images/factory/factory-formation-testing-02.webp',
+    alt: 'Close-up of battery formation and testing at the AMAZELL factory',
+    caption: 'Every batch, checked before it ships.',
   },
 ];
 

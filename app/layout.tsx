@@ -19,6 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.amazellpower.com'),
   title: 'AMAZELL — Power That Never Stops',
   description:
     'AMAZELL engineers high-performance tubular batteries built for Indian conditions.',
@@ -27,6 +28,14 @@ export const metadata: Metadata = {
     description:
       'AMAZELL engineers high-performance tubular batteries built for Indian conditions.',
     type: 'website',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'AMAZELL — Power That Never Stops' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AMAZELL — Power That Never Stops',
+    description:
+      'AMAZELL engineers high-performance tubular batteries built for Indian conditions.',
+    images: ['/og-image.jpg'],
   },
 };
 
