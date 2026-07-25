@@ -164,7 +164,7 @@ export default function HeroFrameSequence({ sectionId }: { sectionId: string }) 
     const trigger = ScrollTrigger.create({
       trigger: `#${sectionId}`,
       start: 'top top',
-      end: 'bottom top',
+      end: 'bottom bottom',
       scrub: 0.6,
       onUpdate: (self) => {
         const index = Math.round(1 + self.progress * (TOTAL_FRAMES - 1));
