@@ -5,8 +5,8 @@ import gsap from 'gsap';
 import dynamic from 'next/dynamic';
 import { usePreloader } from '@/components/providers/PreloaderProvider';
 
-// Three.js touches the DOM directly and must never run during SSR.
-const HeroBattery = dynamic(() => import('@/components/three/HeroBattery'), {
+// Canvas drawing must never run during SSR (no window/canvas on the server).
+const HeroFrameSequence = dynamic(() => import('@/components/hero/HeroFrameSequence'), {
   ssr: false,
 });
 
@@ -36,7 +36,7 @@ export default function Hero() {
           'radial-gradient(120% 90% at 50% 15%, #121110 0%, #050505 55%)',
       }}
     >
-      <HeroBattery sectionId="hero" />
+      <HeroFrameSequence sectionId="hero" />
 
       <div
         className="pointer-events-none absolute inset-0 z-[2]"
