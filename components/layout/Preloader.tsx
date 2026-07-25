@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { usePreloader } from '@/components/providers/PreloaderProvider';
 
@@ -41,8 +42,15 @@ export default function Preloader() {
       ref={rootRef}
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center gap-7 bg-black"
     >
-      <div className="font-display text-[clamp(22px,3vw,30px)] font-bold tracking-[0.14em] text-offwhite/90">
-        AMAZ<span className="text-gold">ELL</span>
+      <div className="relative h-[110px] w-[97px]">
+        <Image
+          src="/brand/amazell-logo-square-light.webp"
+          alt="AMAZELL"
+          fill
+          sizes="97px"
+          className="object-contain"
+          priority
+        />
       </div>
       <div className="relative h-px w-[220px] overflow-hidden bg-line-strong">
         <span

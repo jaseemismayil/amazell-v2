@@ -7,6 +7,7 @@ import type {
   Product,
   Testimonial,
   DealerCity,
+  FactoryImage,
 } from '@/types';
 
 export const stats: StatItem[] = [
@@ -65,11 +66,69 @@ export const manufacturingSteps: ManufacturingStep[] = [
 ];
 
 export const products: Product[] = [
-  { badge: 'Home Series', name: 'AMAZELL AZ-150', capacity: '150 Ah', warranty: '60 Mo', life: '10 Yrs' },
-  { badge: 'Inverter Series', name: 'AMAZELL AZ-200 TT', capacity: '200 Ah', warranty: '66 Mo', life: '11 Yrs' },
-  { badge: 'Solar Series', name: 'AMAZELL SOLARIS 165', capacity: '165 Ah', warranty: '60 Mo', life: '12 Yrs' },
-  { badge: 'Industrial Series', name: 'AMAZELL FORTIS 300', capacity: '300 Ah', warranty: '72 Mo', life: '14 Yrs' },
-  { badge: 'Agri Series', name: 'AMAZELL TERRA 180', capacity: '180 Ah', warranty: '60 Mo', life: '11 Yrs' },
+  {
+    badge: 'Home Series',
+    name: 'AMAZELL AZ-150',
+    capacity: '150 Ah',
+    warranty: '60 Mo',
+    life: '10 Yrs',
+    image: '/images/factory/factory-line-inva-red.webp',
+    imageAlt: 'AMAZELL tubular battery on the production line, red terminal caps',
+  },
+  {
+    badge: 'Inverter Series',
+    name: 'AMAZELL AZ-200 TT',
+    capacity: '200 Ah',
+    warranty: '66 Mo',
+    life: '11 Yrs',
+    image: '/images/factory/factory-quality-control.webp',
+    imageAlt: 'AMAZELL battery passing final quality control checks',
+  },
+  {
+    badge: 'Solar Series',
+    name: 'AMAZELL SOLARIS 165',
+    capacity: '165 Ah',
+    warranty: '60 Mo',
+    life: '12 Yrs',
+    image: '/images/factory/factory-line-solar-green.webp',
+    imageAlt: 'AMAZELL Solar series battery with green terminal caps',
+  },
+  {
+    badge: 'Industrial Series',
+    name: 'AMAZELL FORTIS 300',
+    capacity: '300 Ah',
+    warranty: '72 Mo',
+    life: '14 Yrs',
+    image: '/images/factory/factory-line-industrial-yellow.webp',
+    imageAlt: 'AMAZELL heavy-duty industrial battery with yellow terminal caps',
+  },
+  {
+    badge: 'Agri Series',
+    name: 'AMAZELL TERRA 180',
+    capacity: '180 Ah',
+    warranty: '60 Mo',
+    life: '11 Yrs',
+    image: '/images/factory/factory-formation-testing.webp',
+    imageAlt: 'AMAZELL battery on the formation and testing line',
+  },
+];
+
+export const factoryGallery: FactoryImage[] = [
+  {
+    src: '/images/factory/factory-quality-control.webp',
+    alt: 'Quality control station on the AMAZELL production floor',
+    caption: 'Every unit — voltage, capacity, load and terminal checked.',
+  },
+  {
+    src: '/images/factory/factory-formation-testing.webp',
+    alt: 'Battery formation and testing line at the AMAZELL factory',
+    caption: 'Formation & testing, batch by batch.',
+  },
+  {
+    src: '/images/factory/factory-floor-solar.webp',
+    alt: 'Wide view of the AMAZELL manufacturing floor',
+    caption: 'A production line built for consistency at scale.',
+  },
 ];
 
 export const testimonials: Testimonial[] = [

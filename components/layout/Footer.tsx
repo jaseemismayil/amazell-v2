@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const footerCols = [
@@ -33,8 +34,14 @@ export default function Footer() {
       <div className="mx-auto max-w-wrap">
         <div className="flex flex-wrap justify-between gap-14 border-b border-line pb-14">
           <div>
-            <div className="font-display text-3xl font-bold tracking-[0.1em]">
-              AMAZ<span className="text-gold">ELL</span>
+            <div className="relative h-24 w-[84px]">
+              <Image
+                src="/brand/amazell-logo-square-light.webp"
+                alt="AMAZELL"
+                fill
+                sizes="84px"
+                className="object-contain object-left"
+              />
             </div>
             <p className="mt-4 max-w-[260px] text-[13.5px] leading-relaxed text-muted">
               High-performance tubular batteries, engineered for long life and

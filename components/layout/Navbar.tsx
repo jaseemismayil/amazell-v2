@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { navLinks } from '@/data/content';
@@ -27,9 +28,15 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-wrap items-center justify-between gap-6 px-[6vw]">
-        <a href="#hero" className="flex items-center gap-2 font-display text-lg font-bold tracking-[0.12em]">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold-bright shadow-[0_0_12px_2px_rgba(201,162,75,0.35)]" />
-          AMAZELL
+        <a href="#hero" className="relative block h-6 w-[100px] shrink-0" aria-label="AMAZELL home">
+          <Image
+            src="/brand/amazell-logo-horizontal-light.webp"
+            alt="AMAZELL"
+            fill
+            sizes="100px"
+            className="object-contain object-left"
+            priority
+          />
         </a>
 
         <nav className="hidden gap-10 md:flex">

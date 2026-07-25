@@ -35,6 +35,14 @@ export interface Product {
   capacity: string;
   warranty: string;
   life: string;
+  image: string;
+  imageAlt: string;
+}
+
+export interface FactoryImage {
+  src: string;
+  alt: string;
+  caption: string;
 }
 
 export interface Testimonial {

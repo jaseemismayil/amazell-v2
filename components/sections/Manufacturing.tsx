@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { manufacturingSteps } from '@/data/content';
+import { manufacturingSteps, factoryGallery } from '@/data/content';
 
 export default function Manufacturing() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -67,6 +68,27 @@ export default function Manufacturing() {
           <div className="relative mt-[-1px] h-0.5 bg-line-strong">
             <div ref={barRef} className="absolute inset-y-0 left-0 w-0 bg-gradient-to-r from-bronze to-gold-bright" />
           </div>
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          {factoryGallery.map((photo) => (
+            <div
+              key={photo.src}
+              className="group relative aspect-[4/3] overflow-hidden rounded border border-line"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 33vw"
+                className="object-cover transition-transform duration-700 ease-premium group-hover:scale-105"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+              <p className="absolute inset-x-5 bottom-4 text-[12.5px] leading-snug text-offwhite/90">
+                {photo.caption}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
