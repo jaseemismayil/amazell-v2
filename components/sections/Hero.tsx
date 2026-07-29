@@ -90,7 +90,7 @@ export default function Hero() {
           >
             <div className="hero-eyebrow eyebrow mb-6">Tubular Battery Technology</div>
 
-            <h1 className="font-display text-[clamp(46px,9.4vw,128px)] font-bold uppercase leading-[1.05] text-offwhite">
+            <h1 className="max-w-[440px] font-display text-[clamp(32px,4.6vw,58px)] font-bold uppercase leading-[1.1] text-offwhite">
               <div className="hero-title-line overflow-hidden">
                 <span className="inline-block will-change-transform">POWER</span>
               </div>
@@ -104,7 +104,7 @@ export default function Hero() {
               </div>
             </h1>
 
-            <div className="mt-8 flex flex-wrap items-end justify-between gap-8">
+            <div className="mt-8 flex max-w-[440px] flex-col items-start gap-6">
               <p className="hero-sub max-w-[360px] text-[15px] leading-relaxed text-muted">
                 Engineered for long life. Built for Indian conditions.
               </p>

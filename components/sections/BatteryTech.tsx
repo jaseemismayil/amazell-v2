@@ -3,10 +3,18 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import dynamic from 'next/dynamic';
 import { techLayers } from '@/data/content';
+import type { BatteryFrameSequenceHandle } from '@/components/battery-tech/BatteryFrameSequence';
+
+// Canvas drawing must never run during SSR (no window/canvas on the server).
+const BatteryFrameSequence = dynamic(() => import('@/components/battery-tech/BatteryFrameSequence'), {
+  ssr: false,
+});
 
 export default function BatteryTech() {
   const pinRef = useRef<HTMLDivElement>(null);
+  const frameSeqRef = useRef<BatteryFrameSequenceHandle>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -28,17 +36,7 @@ export default function BatteryTech() {
             el.style.transform = i < step ? 'scaleX(1)' : 'scaleX(0)';
           });
 
-          document.querySelectorAll<HTMLElement>('.layer-label').forEach((el) => {
-            const ln = Number(el.dataset.l);
-            gsap.to(el, { opacity: ln <= step ? 1 : 0, duration: 0.3 });
-          });
-
-          const spread = self.progress;
-          gsap.set('.l1', { x: -spread * 46 });
-          gsap.set('.l2', { x: -spread * 24 });
-          gsap.set('.l3', { x: 0 });
-          gsap.set('.l4', { x: spread * 24 });
-          gsap.set('.l5', { x: spread * 46 });
+          frameSeqRef.current?.draw(self.progress);
         },
       });
 
@@ -53,17 +51,16 @@ export default function BatteryTech() {
       <div ref={pinRef} className="relative h-[420vh]">
         <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
           <div className="mx-auto grid w-full max-w-wrap grid-cols-1 items-center gap-10 px-[6vw] md:grid-cols-2">
-            {/* exploded layer visual */}
-            <div className="relative flex h-[44vh] items-center justify-center md:order-1 md:h-[66vh]">
-              <div className="layer-stack">
-                {techLayers.map((layer, i) => (
-                  <div key={layer.key} className={`layer l${i + 1}`}>
-                    <span className="layer-label" data-l={i + 1}>
-                      <b>{layer.index}</b>&nbsp; {layer.key}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            {/* exploded battery visual */}
+            <div className="relative h-[44vh] overflow-hidden rounded border border-line bg-panel-2 md:order-1 md:h-[66vh]">
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(circle at 50% 42%, rgba(201,162,75,0.10), transparent 68%)',
+                }}
+              />
+              <BatteryFrameSequence ref={frameSeqRef} />
             </div>
 
             {/* synced copy */}

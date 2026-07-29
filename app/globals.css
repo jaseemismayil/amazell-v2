@@ -91,30 +91,6 @@ body{
 .btn:hover .btn-arrow{ transform: translateX(4px); }
 
 /* ---------- battery tech exploded layer stack ---------- */
-.layer-stack{ position: relative; width: 190px; height: 100%; }
-.layer{
-  position: absolute; left: 50%; top: 50%;
-  width: 150px; border-radius: 100px;
-  transform: translate(-50%,-50%);
-  border: 1px solid rgba(243,239,230,0.16);
-}
-.layer .layer-label{
-  position: absolute; left: calc(100% + 26px); top: 50%; transform: translateY(-50%);
-  white-space: nowrap; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8f8c86;
-  display: flex; align-items: center; gap: 12px; opacity: 0;
-}
-.layer .layer-label::before{ content: ''; width: 34px; height: 1px; background: rgba(201,162,75,0.35); }
-.layer .layer-label b{ color: #f2d38a; font-weight: 600; }
-.l1{ height: 520px; background: linear-gradient(180deg, #17130c, #0c0a08); z-index: 1; }
-.l2{ height: 470px; background: linear-gradient(180deg, #1d160b, #100c07); z-index: 2; }
-.l3{ height: 410px; background: linear-gradient(180deg, #241a0c, #130e08); border-color: rgba(201,162,75,0.35); z-index: 3; }
-.l4{ height: 340px; background: linear-gradient(180deg, #2a1d0c, #170f08); z-index: 4; }
-.l5{ height: 250px; background: linear-gradient(180deg, #35270f, #1c130a); box-shadow: 0 0 60px -10px rgba(201,162,75,0.35); z-index: 5; }
-@media (max-width: 900px){
-  .layer{ width: 110px; }
-  .layer .layer-label{ left: calc(100% + 14px); font-size: 9.5px; }
-}
-
 /* ---------- map pulse ---------- */
 .map-dot{ position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #5c5a56; }
 .map-dot.city{ width: 8px; height: 8px; background: #f2d38a; animation: pulse 2.4s ease-out infinite; }
