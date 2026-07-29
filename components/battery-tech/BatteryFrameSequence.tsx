@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const TOTAL_FRAMES = 100;
 // Decoded frames held resident at once. 1280x720 is ~3.5MB/frame decoded, so
@@ -18,22 +18,27 @@ export interface BatteryFrameSequenceHandle {
   draw: (progress: number) => void;
 }
 
+interface BatteryFrameSequenceProps {
+  // Plain callback prop rather than a forwarded ref: this component is
+  // loaded via next/dynamic (React.lazy under the hood), and React does not
+  // forward `ref` through lazy-loaded components even when the target uses
+  // forwardRef — the ref silently stays null with no error. A callback prop
+  // sidesteps that limitation entirely.
+  onReady?: (handle: BatteryFrameSequenceHandle) => void;
+}
+
 /**
  * Renders the exploded-battery frame sequence for the Battery Technology
- * section. Unlike the hero, this section already owns a single ScrollTrigger
- * that drives copy switching and progress bars (see BatteryTech.tsx) — so
- * rather than registering a second, competing scroll listener, this
- * component exposes an imperative draw(progress) handle that the parent
- * calls directly from its existing onUpdate. Keeps one source of truth for
- * scroll progress and avoids a duplicate ScrollTrigger on the same trigger.
+ * section. This section already owns a single ScrollTrigger that drives copy
+ * switching and progress bars (see BatteryTech.tsx) — so rather than
+ * registering a second, competing scroll listener, this component hands the
+ * parent a draw(progress) function via onReady, which the parent calls
+ * directly from its existing onUpdate. Keeps one source of truth for scroll
+ * progress and avoids a duplicate ScrollTrigger on the same trigger.
  */
-const BatteryFrameSequence = forwardRef<BatteryFrameSequenceHandle>(function BatteryFrameSequence(
-  _props,
-  ref
-) {
+export default function BatteryFrameSequence({ onReady }: BatteryFrameSequenceProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const drawRef = useRef<(progress: number) => void>(() => {});
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -147,31 +152,22 @@ const BatteryFrameSequence = forwardRef<BatteryFrameSequenceHandle>(function Bat
     };
     warm();
 
-    drawRef.current = (progress: number) => {
+    const draw = (progress: number) => {
       const index = Math.round(1 + progress * (TOTAL_FRAMES - 1));
       showFrame(index);
     };
+    onReady?.({ draw });
 
     return () => {
       warmCancelled = true;
       window.removeEventListener('resize', resize);
       cache.clear();
     };
-  }, []);
-
-  useImperativeHandle(
-    ref,
-    () => ({
-      draw: (progress: number) => drawRef.current(progress),
-    }),
-    []
-  );
+  }, [onReady]);
 
   return (
     <div ref={wrapRef} className="absolute inset-0">
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
-});
-
-export default BatteryFrameSequence;
+}

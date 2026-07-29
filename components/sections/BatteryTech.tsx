@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import dynamic from 'next/dynamic';
@@ -14,7 +14,18 @@ const BatteryFrameSequence = dynamic(() => import('@/components/battery-tech/Bat
 
 export default function BatteryTech() {
   const pinRef = useRef<HTMLDivElement>(null);
-  const frameSeqRef = useRef<BatteryFrameSequenceHandle>(null);
+  const drawFnRef = useRef<(progress: number) => void>(() => {});
+  const latestProgress = useRef(0);
+
+  // Stable identity so BatteryFrameSequence's setup effect doesn't re-run
+  // on every BatteryTech render.
+  const handleFrameSequenceReady = useCallback((handle: BatteryFrameSequenceHandle) => {
+    drawFnRef.current = handle.draw;
+    // The frame sequence mounts async (dynamic import) after ScrollTrigger
+    // may have already fired onUpdate a few times — catch it up to whatever
+    // the last known scroll progress was instead of sitting on frame 1.
+    drawFnRef.current(latestProgress.current);
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -25,6 +36,7 @@ export default function BatteryTech() {
         end: 'bottom bottom',
         scrub: 0.5,
         onUpdate: (self) => {
+          latestProgress.current = self.progress;
           const step = Math.min(5, Math.max(1, Math.ceil(self.progress * 5) || 1));
 
           document.querySelectorAll<HTMLElement>('.tech-copy-item').forEach((el) => {
@@ -36,7 +48,7 @@ export default function BatteryTech() {
             el.style.transform = i < step ? 'scaleX(1)' : 'scaleX(0)';
           });
 
-          frameSeqRef.current?.draw(self.progress);
+          drawFnRef.current(self.progress);
         },
       });
 
@@ -52,7 +64,7 @@ export default function BatteryTech() {
         <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
           <div className="mx-auto grid w-full max-w-wrap grid-cols-1 items-center gap-10 px-[6vw] md:grid-cols-2">
             {/* exploded battery visual */}
-            <div className="relative h-[44vh] overflow-hidden rounded border border-line bg-panel-2 md:order-1 md:h-[66vh]">
+            <div className="relative aspect-video w-full overflow-hidden rounded border border-line bg-panel-2 md:order-1">
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
@@ -60,7 +72,7 @@ export default function BatteryTech() {
                     'radial-gradient(circle at 50% 42%, rgba(201,162,75,0.10), transparent 68%)',
                 }}
               />
-              <BatteryFrameSequence ref={frameSeqRef} />
+              <BatteryFrameSequence onReady={handleFrameSequenceReady} />
             </div>
 
             {/* synced copy */}
