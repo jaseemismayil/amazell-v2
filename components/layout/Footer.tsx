@@ -1,29 +1,30 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const footerCols = [
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '#why' },
-      { label: 'Manufacturing', href: '#manufacturing' },
-      { label: 'Technology', href: '#tech' },
+      { label: 'About', href: '/about' },
+      { label: 'Manufacturing', href: '/#manufacturing' },
+      { label: 'Technology', href: '/technology' },
     ],
   },
   {
     title: 'Products',
     links: [
-      { label: 'Home Series', href: '#products' },
-      { label: 'Inverter Series', href: '#products' },
-      { label: 'Solar Series', href: '#products' },
+      { label: 'Home Series', href: '/products' },
+      { label: 'Inverter Series', href: '/products' },
+      { label: 'Solar Series', href: '/products' },
     ],
   },
   {
     title: 'Network',
     links: [
-      { label: 'Find a Dealer', href: '#dealers' },
-      { label: 'Become a Dealer', href: '#dealers' },
-      { label: 'Contact Us', href: '#final-cta' },
+      { label: 'Find a Dealer', href: '/dealers' },
+      { label: 'Become a Dealer', href: '/dealers' },
+      { label: 'Contact Us', href: '/#final-cta' },
     ],
   },
 ];
@@ -56,13 +57,13 @@ export default function Footer() {
                   {col.title}
                 </h6>
                 {col.links.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     className="mb-3 block text-sm text-muted transition-colors hover:text-gold-bright"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}

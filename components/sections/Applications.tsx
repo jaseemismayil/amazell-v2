@@ -11,19 +11,6 @@ export default function Applications() {
   return (
     <section id="applications" ref={rootRef} className="bg-black py-24 md:py-[150px]">
       <div className="mx-auto max-w-wrap px-[6vw]">
-        <div data-reveal className="mb-16 max-w-[640px] opacity-0 translate-y-9">
-          <div className="eyebrow">Where Power Matters</div>
-          <h2 className="mt-4 font-display text-[clamp(30px,4.2vw,54px)] text-offwhite">
-            One core technology.
-            <br />
-            Six demanding worlds.
-          </h2>
-          <p className="mt-5 max-w-[520px] text-[15.5px] leading-relaxed text-muted">
-            From a quiet home backup to round-the-clock industrial load — every
-            AMAZELL cell is tuned for the conditions it&apos;s asked to survive.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 md:grid-cols-3">
           {applications.map((app) => (
             <div

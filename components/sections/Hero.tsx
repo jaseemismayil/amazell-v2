@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import dynamic from 'next/dynamic';
@@ -109,12 +110,12 @@ export default function Hero() {
                 Engineered for long life. Built for Indian conditions.
               </p>
               <div className="hero-actions flex flex-wrap gap-4">
-                <a href="#products" className="btn btn-primary" data-hover>
+                <Link href="/products" className="btn btn-primary" data-hover>
                   <span>Explore Products</span>
-                </a>
-                <a href="#dealers" className="btn btn-ghost" data-hover>
+                </Link>
+                <Link href="/dealers" className="btn btn-ghost" data-hover>
                   <span>Become a Dealer</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

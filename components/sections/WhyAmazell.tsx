@@ -20,15 +20,6 @@ export default function WhyAmazell() {
   return (
     <section id="why" ref={rootRef} className="bg-black py-24 md:py-[150px]">
       <div className="mx-auto max-w-wrap px-[6vw]">
-        <div data-reveal className="mb-16 max-w-[640px] opacity-0 translate-y-9">
-          <div className="eyebrow">Why AMAZELL</div>
-          <h2 className="mt-4 font-display text-[clamp(30px,4.2vw,54px)] text-offwhite">
-            Precision engineering,
-            <br />
-            not just manufacturing.
-          </h2>
-        </div>
-
         <div className="grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2">
           {whyItems.map((item) => {
             const Icon = icons[item.icon];

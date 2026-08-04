@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Link from 'next/link';
 import { dealerCities } from '@/data/content';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -24,16 +25,7 @@ export default function DealerNetwork() {
       <div className="mx-auto max-w-wrap px-[6vw]">
         <div className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <div data-reveal className="eyebrow opacity-0 translate-y-9">Dealer Network</div>
-            <h2 data-reveal className="mt-4 font-display text-[clamp(30px,4.2vw,54px)] text-offwhite opacity-0 translate-y-9">
-              Present across every state you serve.
-            </h2>
-            <p data-reveal className="mt-4 max-w-[440px] text-[15px] leading-relaxed text-muted opacity-0 translate-y-9">
-              Search your city to find your nearest authorised AMAZELL dealer,
-              or apply to bring the network to yours.
-            </p>
-
-            <div data-reveal className="mt-8 flex max-w-[420px] items-center rounded-full border border-line-strong py-1.5 pl-5.5 pr-1.5 opacity-0 translate-y-9">
+            <div data-reveal className="mt-0 flex max-w-[420px] items-center rounded-full border border-line-strong py-1.5 pl-5.5 pr-1.5 opacity-0 translate-y-9">
               <input
                 type="text"
                 value={query}
@@ -59,9 +51,9 @@ export default function DealerNetwork() {
               ))}
             </div>
 
-            <a href="#final-cta" data-hover className="btn btn-primary mt-9 inline-flex">
+            <Link href="/#final-cta" data-hover className="btn btn-primary mt-9 inline-flex">
               <span>Become a Dealer</span>
-            </a>
+            </Link>
           </div>
 
           <div data-reveal className="relative mx-auto aspect-[1/1.05] w-full max-w-[440px] opacity-0 translate-y-9">

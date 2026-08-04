@@ -149,9 +149,9 @@ export const dealerCities: DealerCity[] = [
 ];
 
 export const navLinks = [
-  { label: 'Technology', href: '#tech' },
-  { label: 'Products', href: '#products' },
-  { label: 'Applications', href: '#applications' },
-  { label: 'Dealers', href: '#dealers' },
-  { label: 'About', href: '#why' },
+  { label: 'Technology', href: '/technology' },
+  { label: 'Products', href: '/products' },
+  { label: 'Applications', href: '/applications' },
+  { label: 'Dealers', href: '/dealers' },
+  { label: 'About', href: '/about' },
 ];

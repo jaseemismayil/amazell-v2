@@ -40,13 +40,6 @@ export default function FeaturedProducts() {
     <section id="products" className="overflow-hidden bg-black">
       <div ref={pinRef} className="relative h-[180vh]">
         <div className="sticky top-0 flex h-[100svh] flex-col justify-center">
-          <div className="mb-14 px-[6vw]">
-            <div className="eyebrow">Featured Products</div>
-            <h2 className="mt-4 font-display text-[clamp(30px,4.2vw,54px)] text-offwhite">
-              Built for every backup, at every scale.
-            </h2>
-          </div>
-
           <div ref={trackRef} className="flex gap-7 pl-[6vw] will-change-transform">
             {products.map((product) => (
               <div

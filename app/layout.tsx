@@ -3,6 +3,8 @@ import { Unbounded, Inter } from 'next/font/google';
 import './globals.css';
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
 import Cursor from '@/components/layout/Cursor';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 const unbounded = Unbounded({
   subsets: ['latin'],
@@ -48,7 +50,11 @@ export default function RootLayout({
     <html lang="en" className={`${unbounded.variable} ${inter.variable}`}>
       <body className="bg-black text-offwhite font-body antialiased">
         <Cursor />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );
